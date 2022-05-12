@@ -1,0 +1,56 @@
+  <main id="main" data-aos="fade-up">
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Portfolio Details</h2>
+          <ol>
+            <li>
+            <button [disabled]="IsFirstItem()" [class.bg-secondary]="IsFirstItem()" class="btn btn-primary" (click)="PreviousProduct()">Previous</button></li>
+           <li> <button [disabled]="IsLastItem()" [class.bg-secondary]="IsLastItem()" class="btn btn-primary" (click)="NextProduct()">Next</button>
+          </li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- Breadcrumbs Section -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                <div class="swiper-slide">
+                  <img width="30%" height="60%" [src]="createImgPath(currProduct.photo)" alt="">
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Product information</h3>
+              <ul>
+                <li><strong>Name</strong>: {{currProduct.name}}</li>
+                <li><strong>Price</strong>: {{currProduct.price |currency}}</li>
+                <li><strong>Quantity</strong>: {{currProduct.quantity}}</li>
+                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+              </ul>
+            </div>
+            <div class="portfolio-description">
+              <h2>This is an description of detail</h2>
+              <p>
+                {{currProduct.description}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Portfolio Details Section -->
+  </main><!-- End #main -->
+  <!-- ======= Footer ======= -->

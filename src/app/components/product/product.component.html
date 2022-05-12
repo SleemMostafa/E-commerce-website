@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 mt-4">
+      <h4>MOST POPULAR PERFUME & COLOGNE BRANDS</h4>
+      <p>Free shipping on thousands of fragrances. Save up to 80% off retail.
+    </p>
+    </div>
+    <div class="col-6">
+        <select id="category" name="category"
+        class="form-select bg-light mt-4" #selectedCatID (change)="changeSelect(+selectedCatID.value)"
+        aria-label="Disabled select example">
+        <option value="0" selected>All Products</option>
+        <option *ngFor="let cat of categoryList" [value]="cat.id">{{cat.name}}</option>
+        </select>
+    </div>
+  </div>
+</div>
+<hr />
+<div class="mb-4">
+    <div class="row">
+        <div class="col-4 mt-4" *ngFor="let item of productListOfCategory ; let i = index ; trackBy:ProductIsTrackBy">
+          <div  class="card  p-2" style="color: rgb(93, 93, 97);box-shadow: 2px 2px 10px 2px rgba(14, 13, 1, 0.3);">
+            <div class="p-info px-3 py-3">
+              <div>
+                <h3 class="mb-0">{{ item.name }}</h3>
+                <span><br></span>
+              </div>
+              <div class="p-price  d-flex flex-row">
+                <h4>{{ item.price | currency }}</h4>
+              </div>
+            </div>
+            <div class="text-center p-image"><img [src]="createImgPath(item.photo)">
+            </div>
+            <div class="p-about">
+              <p style="font-weight:400;font-size: medium;">
+                {{item.description}}
+              </p>
+              <input #itemCount name="quantity" id="quantity" class="form-control" type="number" value="1"  min="1" max="{{item.quantity}}">
+            </div>
+            <div class="buttons d-flex flex-row gap-3 px-3">
+              <button class="btn btn-primary w-100" (click)="OpenProductDetail(item.id)">View</button>
+              <button class="btn btn-primary w-100" (click)="AddToCart(+itemCount.value,item)">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
