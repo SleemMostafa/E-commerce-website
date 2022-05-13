@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
       let conf = confirm("You must login to make order.... you want login?")
       if(conf)
       {
-        this.router.navigate(['/Login']);
+        this.router.navigate(['User/Login']);
         return false;
       }
     }
